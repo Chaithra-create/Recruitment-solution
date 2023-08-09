@@ -1,0 +1,28 @@
+.main{
+    margin: 10rem;
+}
+
+img{
+    width: 400px;
+    height: 280px;
+}
+
+.register-link{
+    color: #001C30;
+    text-decoration: underline;
+    position: relative;
+    top: 2rem;
+    left: 8rem;
+}
+
+.login-btn{
+    background-color: #176B87;
+    border: none;
+    margin-top: 1rem;
+    padding: 10px 30px;
+}
+
+.login-btn:hover{
+    opacity: 1;
+}
+

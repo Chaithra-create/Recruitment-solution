@@ -1,0 +1,49 @@
+.main{
+    margin: 5rem;
+}
+
+h1{
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.signUp-img{
+    width: 80%;
+    padding-bottom: 2rem;
+}
+
+.click-link{
+    color: #001C30;
+    text-decoration: underline;
+}
+
+.icon{
+    width: 12px;
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid #999;
+    display: inline-block;
+    border-radius: 0;
+    width: auto;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #222; }
+
+.register-btn{
+    background-color: #176B87;
+    border: none;
+    margin-top: 1rem;
+    padding: 10px 30px;
+}
+
+.form-group{
+    padding-bottom: 1rem;
+}

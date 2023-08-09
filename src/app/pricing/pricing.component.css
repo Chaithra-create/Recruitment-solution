@@ -1,0 +1,64 @@
+.container{
+    text-align: center;
+}
+
+h6{
+    margin: 2rem;
+}
+
+label{
+    display: block;
+}
+
+.theader-style{
+    background-color: #176B87  ;
+    color: white;
+}
+
+.caption{
+    font-weight: 100;
+    font-size: 14px;
+}
+
+tbody tr:hover{
+    background-color: #ddd;
+}
+
+.chat-btn{
+    position: fixed;
+    bottom: 2px;
+    right: 10px;
+}
+
+.chat-popup{
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 2px;
+    border: 3px solid #f1f1f1;
+}
+
+form{
+    padding: 10px;
+    background-color: white;
+}
+
+textarea{
+    padding: 5px;
+    background-color: #f1f1f1;
+    border: none;
+    height: 200px;
+}
+
+textarea:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+.btn{
+    margin-right: 5px;
+}
+
+img{
+    width: 25px;
+}

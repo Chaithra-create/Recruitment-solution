@@ -1,0 +1,88 @@
+<div class="container">
+  <h6>How do you want to hire?</h6>
+  <div class="table table-bordered">
+    <thead class="theader-style">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">
+          Scale up
+          <p class="caption">Hire good tech talent from junior to mid level</p>
+        </th>
+        <th scope="col">
+          Scale up 360
+          <p class="caption">
+            Hire great tech talent and build a strong employer brand
+          </p>
+        </th>
+        <th scope="col">
+          Enterprise
+          <p class="caption">
+            Hire the best talent with the best of features and support
+          </p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Profile unlocks per month per seat</td>
+        <td>400 / mo</td>
+        <td>600 / mo</td>
+        <td>1000 / mo</td>
+      </tr>
+      <tr>
+        <td>See candidates with current salary upto</td>
+        <td>50LPA</td>
+        <td>80LPA</td>
+        <td>No limits</td>
+      </tr>
+      <tr>
+        <td>Max active job positions</td>
+        <td>12</td>
+        <td>20</td>
+        <td>No limits</td>
+      </tr>
+      <tr>
+        <td>Post jobs without disclosing salary</td>
+        <td><img src="assets/circle-check-solid.svg" alt="check" /></td>
+        <td><img src="assets/circle-check-solid.svg" alt="check" /></td>
+        <td><img src="assets/circle-check-solid.svg" alt="check" /></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>INR <strong>3.49L</strong> / yr</td>
+        <td>INR <strong>5.99L</strong> / yr</td>
+        <td>INR <strong>19.99L</strong> / yr</td>
+      </tr>
+    </tbody>
+  </div>
+</div>
+
+<button type="button" class="btn btn-success chat-btn" (click)="openForm()">
+  Chat
+</button>
+<div id="myForm" class="chat-popup">
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="message">
+        <b>Message</b>
+      </label>
+      <textarea
+        name="message"
+        id="message"
+        cols="30"
+        rows="10"
+        placeholder="Type message..."
+        [(ngModel)]="message"
+      ></textarea>
+    </div>
+    <div *ngIf="details" style="margin-bottom: 10px">
+      {{ details }}
+    </div>
+    <button type="button" class="btn btn-success" (click)="sendMessage()">
+      Send
+    </button>
+    <button type="button" class="btn btn-danger" (click)="closeForm()">
+      Close
+    </button>
+  </form>
+</div>
