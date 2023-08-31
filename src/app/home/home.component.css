@@ -11,19 +11,17 @@ body{
   background-color: #efefef;
 }
 
-.dropdown-item:hover{
-  color: #176B87;
-}
+
 .first-img{
     width: 80rem;
     height: 25rem;
-    padding: 4rem 0;
+    padding: 4rem 0 0;
     position: relative;
 }
 
 .txt-on-img{
     position: absolute;
-  top: 90%;
+  top: 95%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
@@ -48,16 +46,16 @@ body{
 }
 
 .desc{
-    color: white;
-    background-color: #176B87;
+    color: #001C30;
+    margin-top: 2rem;
 }
 
 h1{
-    font-size: 5.5rem;
+    font-size: 4.5rem;
 }
 
 .desc-p{
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 
 .heading-1{

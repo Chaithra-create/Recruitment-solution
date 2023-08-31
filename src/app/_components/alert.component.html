@@ -1,0 +1,16 @@
+<div
+  *ngIf="message"
+  [ngClass]="message.cssClass"
+  class="alert-dissmissable"
+  role="alert"
+>
+  {{ message.text }}
+  <button
+    type="button"
+    class="close float-right"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

@@ -11,6 +11,7 @@ user:User = {
   userName:'',
   password:''
 }
+pwdPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$@^!%*?&])(?!.*\s).{8,}$";
 
   ngOnInit(): void {
     

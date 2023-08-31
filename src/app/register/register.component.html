@@ -14,8 +14,20 @@
               id="name"
               class="form-control"
               placeholder="Enter Name"
+              [(ngModel)]="user.name"
+              #name="ngModel"
               required
+              minlength="4"
             />
+            <div
+              *ngIf="name.invalid && (name.touched || name.dirty)"
+              class="error-message"
+            >
+              <div *ngIf="name.errors?.['required']">Name is required</div>
+              <div *ngIf="name.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="email"
@@ -30,8 +42,20 @@
               id="email"
               class="form-control"
               placeholder="Enter Email"
+              [(ngModel)]="user.email"
+              #email="ngModel"
               required
+              email
             />
+            <div
+              *ngIf="email.invalid && (email.touched || email.dirty)"
+              class="error-message"
+            >
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+              <div *ngIf="email.errors?.['email']">
+                Enter valid Email address
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="password"
@@ -43,8 +67,24 @@
               id="password"
               class="form-control"
               placeholder="Enter Password"
+              [(ngModel)]="user.password"
+              #password="ngModel"
               required
+              [pattern]="pwdPattern"
             />
+            <div
+              *ngIf="password.invalid && (password.touched || password.dirty)"
+              class="error-message"
+            >
+              <div *ngIf="password.errors?.['required']">
+                Password is required
+              </div>
+              <div *ngIf="password.errors?.['pattern']">
+                Password must be 8 characters long. Must contain atleast 1
+                digit, 1 smallcase character, 1 uppercase character and 1
+                special character.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="rpassword"
@@ -56,22 +96,45 @@
               id="rpassword"
               class="form-control"
               placeholder="Repeat Password"
+              formControlName="rpassword"
               required
             />
+            <!-- <div
+              *ngIf="password.invalid && (password.touched || password.dirty)"
+              class="alert alert-danger"
+            >
+              Repeat your password
+            </div> -->
+            <!-- <div
+              *ngIf="passwordForm.errors?.['PasswordNoMatch']"
+              class="error-message"
+            >
+              Password doesn't match
+            </div> -->
           </div>
-          <div class="form-check">
+          <div class="form-check" (change)="checkState($event)">
             <input
               class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
+              name="flexCheckDefault"
+              checked
               value=""
             />
             <label class="form-check-label" for="flexCheckDefault"
               >I agree all statements in
               <a href="#" class="click-link">Terms of service</a>
             </label>
+            <div *ngIf="!accepted" class="error-message">
+              Please accept Terms of service!
+            </div>
           </div>
-          <button type="button" class="btn btn-primary register-btn">
+          <button
+            type="submit"
+            class="btn btn-primary register-btn"
+            [disabled]="registerForm.form.invalid"
+            (click)="onSubmit()"
+          >
             Register
           </button>
         </form>

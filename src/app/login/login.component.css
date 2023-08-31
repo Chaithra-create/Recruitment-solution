@@ -26,3 +26,9 @@ img{
     opacity: 1;
 }
 
+.error-message{
+    color: #cc0033;
+    font-size: 14px;
+    margin: 5px 0 0;
+}
+
