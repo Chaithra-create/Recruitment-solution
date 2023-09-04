@@ -1,3 +1,6 @@
+<div>
+  <alert></alert>
+</div>
 <section class="main">
   <div class="container">
     <div class="row">
@@ -19,21 +22,22 @@
               name="name"
               class="form-control"
               placeholder="Enter your name"
-              [(ngModel)]="user.userName"
-              #name="ngModel"
+              [(ngModel)]="form.username"
+              #username="ngModel"
               required
               minlength="4"
               [ngClass]="{
-                'is-valid': name.valid && !name.errors,
-                'is-invalid': name.invalid && (name.touched || name.dirty)
+                'is-valid': username.valid && !username.errors,
+                'is-invalid':
+                  username.invalid && (username.touched || username.dirty)
               }"
             />
             <div
-              *ngIf="name.invalid && (name.touched || name.dirty)"
+              *ngIf="username.invalid && (username.touched || username.dirty)"
               class="error-message"
             >
-              <div *ngIf="name.errors?.['required']">Name is required</div>
-              <div *ngIf="name.errors?.['minlength']">
+              <div *ngIf="username.errors?.['required']">Name is required</div>
+              <div *ngIf="username.errors?.['minlength']">
                 Name must be at least 4 characters long.
               </div>
             </div>
@@ -47,7 +51,7 @@
               name="password"
               class="form-control"
               placeholder="Enter password"
-              [(ngModel)]="user.password"
+              [(ngModel)]="form.password"
               #password="ngModel"
               required
               [pattern]="pwdPattern"

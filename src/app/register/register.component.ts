@@ -1,9 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { User } from '../models/user.model'
-import { UserService } from '../services/user.service'; 
-import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
-import { first } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,32 +8,41 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private userService:UserService, 
-    private router:Router,
-    private alertService:AlertService){}
-user:User = {
-  id:1,
-  name:'',
-  email:'',
-  password:'',
-  token:''
-}
+
+    form: any = {
+      username: null,
+      email: null,
+      password:null
+    };
+    isSuccessful = false;
+    isSignUpFailed = false;
+    errorMessage = '';
+
 pwdPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$@^!%*?&])(?!.*\s).{8,}$";
 
 accepted: boolean = true;
+
+constructor( private alertService:AlertService,
+  private authService: AuthService){}
 
 checkState(event:any){
   console.log(event);
  this.accepted = event.target.checked;
 }
 
-  onSubmit(){
-  this.userService.registerUser(this.user).
-  pipe(first()).
-  subscribe(data => {
-    this.alertService.success('Registration successful',true);
-    //this.router.navigate(['/login']);
-  })
-  console.log(this.user);
+  onSubmit():void{
+    const {username,email,password} = this.form;
+this.authService.register(username,email,password).subscribe({
+  next: data => {
+    console.log(data);
+    this.isSuccessful = true;
+    this.isSignUpFailed = false;
+    this.alertService.success('Registration successful!',true);
+  },
+  error:err => {
+this.errorMessage = err.errorMessage;
+this.isSignUpFailed = true;
   }
+})  
+ }
 }

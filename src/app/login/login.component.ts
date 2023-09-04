@@ -1,5 +1,7 @@
-import { Component, ViewChild,OnInit } from '@angular/core';
-import { User } from '../user.model';
+import { Component,OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +9,40 @@ import { User } from '../user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-user:User = {
-  userName:'',
-  password:''
-}
+  form:any ={
+    username: null,
+    password: null
+  }
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+
 pwdPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$@^!%*?&])(?!.*\s).{8,}$";
 
+constructor(private authService: AuthService,
+  private storageService:StorageService,
+  private alertService:AlertService){}
+
   ngOnInit(): void {
-    
+    if(this.storageService.isLoggedIn()){
+this.isLoggedIn = true;
+    }
   }
 
-  onSubmit(){
-    console.log(this.user );
+  onSubmit():void{
+   const {username,password} = this.form;
+   this.authService.login(username,password).subscribe({
+    next: data => {
+      console.log(data);
+      this.storageService.saveUser(data);
+      this.isLoggedIn = true;
+      this.isLoginFailed = false;
+this.alertService.success(`Logged in as ${username}`,true);
+    },
+    error: err => {
+      this.isLoginFailed = true;
+      this.errorMessage = err.errorMessage;
+    }
+   })
   }
 }

@@ -14,17 +14,17 @@
               id="name"
               class="form-control"
               placeholder="Enter Name"
-              [(ngModel)]="user.name"
-              #name="ngModel"
+              [(ngModel)]="form.username"
+              #username="ngModel"
               required
               minlength="4"
             />
             <div
-              *ngIf="name.invalid && (name.touched || name.dirty)"
+              *ngIf="username.invalid && (username.touched || username.dirty)"
               class="error-message"
             >
-              <div *ngIf="name.errors?.['required']">Name is required</div>
-              <div *ngIf="name.errors?.['minlength']">
+              <div *ngIf="username.errors?.['required']">Name is required</div>
+              <div *ngIf="username.errors?.['minlength']">
                 Name must be at least 4 characters long.
               </div>
             </div>
@@ -42,7 +42,7 @@
               id="email"
               class="form-control"
               placeholder="Enter Email"
-              [(ngModel)]="user.email"
+              [(ngModel)]="form.email"
               #email="ngModel"
               required
               email
@@ -67,7 +67,7 @@
               id="password"
               class="form-control"
               placeholder="Enter Password"
-              [(ngModel)]="user.password"
+              [(ngModel)]="form.password"
               #password="ngModel"
               required
               [pattern]="pwdPattern"
@@ -96,7 +96,6 @@
               id="rpassword"
               class="form-control"
               placeholder="Repeat Password"
-              formControlName="rpassword"
               required
             />
             <!-- <div
@@ -133,7 +132,7 @@
             type="submit"
             class="btn btn-primary register-btn"
             [disabled]="registerForm.form.invalid"
-            (click)="onSubmit()"
+            (click)="onSubmit(); registerForm.reset()"
           >
             Register
           </button>
@@ -145,6 +144,11 @@
         </div>
         <a routerLink="/login" class="click-link">I am already a member</a>
       </div>
+    </div>
+  </div>
+  <div class="row message">
+    <div class="col-sm">
+      <alert></alert>
     </div>
   </div>
 </div>

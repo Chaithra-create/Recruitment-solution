@@ -48,10 +48,8 @@ input:focus::-webkit-input-placeholder {
     padding-bottom: 1rem;
 }
 
-.alert-danger{
-    width: 40%;
-    margin-left: 0.5rem;
-    margin-bottom: 0;
+.message{
+    float: right;
 }
 
 .error-message{
