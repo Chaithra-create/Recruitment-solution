@@ -1,9 +1,16 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <div class="main">
   <div class="container">
     <div class="row">
       <div class="col-sm">
         <h1>Sign up</h1>
-        <form #registerForm="ngForm">
+        <form
+          #registerForm="ngForm"
+          [appMatchPassword]="['password', 'confirmPassword']"
+        >
           <div class="form-group">
             <label for="name">
               <img src="assets/user-solid.svg" alt="user-icon" class="icon" />
@@ -72,6 +79,11 @@
               required
               [pattern]="pwdPattern"
             />
+            <div class="form-group-append">
+              <span class="form-group-text">
+                <i class="fa fa-eye-slash"></i>
+              </span>
+            </div>
             <div
               *ngIf="password.invalid && (password.touched || password.dirty)"
               class="error-message"
@@ -87,29 +99,33 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="rpassword"
+            <label for="confirmPassword"
               ><img src="assets/lock-solid.svg" alt="user-icon" class="icon"
             /></label>
             <input
               type="password"
-              name="rpassword"
-              id="rpassword"
+              name="confirmPassword"
+              id="confirmPassword"
               class="form-control"
-              placeholder="Repeat Password"
+              placeholder="Confirm Password"
+              [(ngModel)]="form.confirmPassword"
+              #confirmPassword="ngModel"
               required
             />
-            <!-- <div
-              *ngIf="password.invalid && (password.touched || password.dirty)"
-              class="alert alert-danger"
-            >
-              Repeat your password
-            </div> -->
-            <!-- <div
-              *ngIf="passwordForm.errors?.['PasswordNoMatch']"
+            <div
+              *ngIf="
+                confirmPassword.invalid &&
+                (confirmPassword.touched || confirmPassword.dirty)
+              "
               class="error-message"
             >
-              Password doesn't match
-            </div> -->
+              <div *ngIf="confirmPassword.errors?.['required']">
+                Confirm password is required
+              </div>
+              <div *ngIf="confirmPassword.errors?.['matching']">
+                Password does not match!
+              </div>
+            </div>
           </div>
           <div class="form-check" (change)="checkState($event)">
             <input

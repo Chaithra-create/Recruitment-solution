@@ -7,7 +7,7 @@ import { AlertService } from "src/app/services/alert.service";
     templateUrl:'alert.component.html'
 })
 export class AlertComponent implements OnInit, OnDestroy{
-    private subscription: Subscription = new Subscription;
+    private subscription!: Subscription;
 message:any;
 
     constructor(private alertService:AlertService){}
@@ -23,6 +23,7 @@ switch(message && message.type){
     break;
 }
 this.message = message;
+console.log(message);
         })
     }
 

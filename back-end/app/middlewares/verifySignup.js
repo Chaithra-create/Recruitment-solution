@@ -13,7 +13,7 @@ return;
 }
 
 if(user){
-    res.status(400).send({message: 'Falied!Username is already in use'});
+    res.status(400).send({message: 'Signup failed!Username is already in use'});
     return;
 }
 
@@ -26,7 +26,7 @@ User.findOne({
         return;
     }
     if(user){
-        res.status(400).send({message:'Failed!Email is already in use'});
+        res.status(400).send({message:'Signup failed!Email is already in use'});
         return;
     }
     next();

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
 
@@ -12,7 +12,8 @@ export class RegisterComponent {
     form: any = {
       username: null,
       email: null,
-      password:null
+      password:null,
+      confirmPassword:null
     };
     isSuccessful = false;
     isSignUpFailed = false;
@@ -31,8 +32,10 @@ checkState(event:any){
 }
 
   onSubmit():void{
-    const {username,email,password} = this.form;
-this.authService.register(username,email,password).subscribe({
+    const {username,email,password,confirmPassword} = this.form;
+    this.alertService.clear();
+this.authService.register(username,email,password).
+subscribe({
   next: data => {
     console.log(data);
     this.isSuccessful = true;
@@ -40,8 +43,9 @@ this.authService.register(username,email,password).subscribe({
     this.alertService.success('Registration successful!',true);
   },
   error:err => {
-this.errorMessage = err.errorMessage;
+this.errorMessage = err.error.message;
 this.isSignUpFailed = true;
+this.alertService.warning(this.errorMessage,true);
   }
 })  
  }

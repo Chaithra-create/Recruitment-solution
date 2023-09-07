@@ -1,0 +1,31 @@
+h4,p{
+    text-align: center;
+}
+
+.container{
+    margin-top: 5rem;
+}
+form{
+    border: 1px solid #999;
+    padding: 10px;
+    width: 30rem;
+     border-radius: 2px;
+}
+
+.label{
+    padding: 5px;
+}
+
+input{
+    border-bottom: 1px solid #999;
+    display: inline-block;
+    border-radius: 0;
+    width: auto;
+    position: absolute;
+    right: 160px;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: black;
+}

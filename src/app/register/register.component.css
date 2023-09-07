@@ -58,3 +58,8 @@ input:focus::-webkit-input-placeholder {
     margin: 5px 0 0 12px;
     height: 0.8rem;
 }
+
+.form-group-append{
+    display: inline;
+    margin-left: -1rem;
+}

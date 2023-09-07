@@ -31,6 +31,7 @@ this.isLoggedIn = true;
 
   onSubmit():void{
    const {username,password} = this.form;
+   this.alertService.clear();
    this.authService.login(username,password).subscribe({
     next: data => {
       console.log(data);
@@ -41,7 +42,8 @@ this.alertService.success(`Logged in as ${username}`,true);
     },
     error: err => {
       this.isLoginFailed = true;
-      this.errorMessage = err.errorMessage;
+      this.errorMessage = err.error.message;
+      this.alertService.warning(this.errorMessage,true);
     }
    })
   }

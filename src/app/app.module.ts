@@ -13,6 +13,8 @@ import { PricingComponent } from './pricing/pricing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components/alert.component';
+import { MatchPasswordDirective } from './directives/match-password.directive';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AlertComponent } from './_components/alert.component';
     PricingComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    MatchPasswordDirective,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

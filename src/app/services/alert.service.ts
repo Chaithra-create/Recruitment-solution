@@ -17,4 +17,13 @@ return this.subject.asObservable();
 this.keepAfterRouteChange = keepAfterRouteChange;
 this.subject.next({type:'success',text:message});
   }  
+
+  warning(message:string, keepAfterRouteChange = false){
+this.keepAfterRouteChange = keepAfterRouteChange;
+this.subject.next({type:'error',text:message});
+  }
+
+  clear(){
+    this.subject.next('');
+  }
 }
