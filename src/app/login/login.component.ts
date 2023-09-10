@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit{
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-
-pwdPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$@^!%*?&])(?!.*\s).{8,}$";
+  fieldTextType: boolean = false;
 
 constructor(private authService: AuthService,
   private storageService:StorageService,
@@ -27,6 +26,10 @@ constructor(private authService: AuthService,
     if(this.storageService.isLoggedIn()){
 this.isLoggedIn = true;
     }
+  }
+
+  toggleFieldTextType():boolean{
+return this.fieldTextType = !this.fieldTextType;
   }
 
   onSubmit():void{
@@ -39,6 +42,7 @@ this.isLoggedIn = true;
       this.isLoggedIn = true;
       this.isLoginFailed = false;
 this.alertService.success(`Logged in as ${username}`,true);
+setTimeout(() => {this.reloadPage();},2000 );
     },
     error: err => {
       this.isLoginFailed = true;
@@ -46,5 +50,9 @@ this.alertService.success(`Logged in as ${username}`,true);
       this.alertService.warning(this.errorMessage,true);
     }
    })
+  }
+
+  reloadPage(): void{
+    window.location.reload();
   }
 }

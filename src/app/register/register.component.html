@@ -1,7 +1,3 @@
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
 <div class="main">
   <div class="container">
     <div class="row">
@@ -69,7 +65,7 @@
               ><img src="assets/lock-solid.svg" alt="user-icon" class="icon"
             /></label>
             <input
-              type="password"
+              [type]="fieldTextType1 ? 'text' : 'password'"
               name="password"
               id="password"
               class="form-control"
@@ -81,7 +77,14 @@
             />
             <div class="form-group-append">
               <span class="form-group-text">
-                <i class="fa fa-eye-slash"></i>
+                <i
+                  class="fa fa-eye-slash"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType1,
+                    'fa-eye': fieldTextType1
+                  }"
+                  (click)="toggleFieldTextType1()"
+                ></i>
               </span>
             </div>
             <div
@@ -103,7 +106,7 @@
               ><img src="assets/lock-solid.svg" alt="user-icon" class="icon"
             /></label>
             <input
-              type="password"
+              [type]="fieldTextType2 ? 'text' : 'password'"
               name="confirmPassword"
               id="confirmPassword"
               class="form-control"
@@ -112,6 +115,18 @@
               #confirmPassword="ngModel"
               required
             />
+            <div class="form-group-append">
+              <span class="form-group-text">
+                <i
+                  class="fa fa-eye-slash"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType2,
+                    'fa-eye': fieldTextType2
+                  }"
+                  (click)="toggleFieldTextType2()"
+                ></i>
+              </span>
+            </div>
             <div
               *ngIf="
                 confirmPassword.invalid &&

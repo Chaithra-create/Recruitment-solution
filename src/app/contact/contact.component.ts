@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -14,4 +15,13 @@ designation:null,
 email:null,
 city:null
 }
+
+submitted:boolean = false;
+
+onSubmit(){
+  const {name,contactNumber,email,company,designation,city} = this.form;
+    this.submitted = true;
+}
+
+
 }

@@ -42,11 +42,10 @@
               </div>
             </div>
           </div>
-
-          <div class="form-group">
-            <label for="password">Password</label>
+          <label for="password">Password</label>
+          <div class="input-group">
             <input
-              type="password"
+              [type]="fieldTextType ? 'text' : 'password'"
               id="password"
               name="password"
               class="form-control"
@@ -54,25 +53,35 @@
               [(ngModel)]="form.password"
               #password="ngModel"
               required
-              [pattern]="pwdPattern"
+              minlength="8"
               [ngClass]="{
                 'is-valid': password.valid && !password.errors,
                 'is-invalid':
                   password.invalid && (password.touched || password.dirty)
               }"
             />
-            <div
-              *ngIf="password.invalid && (password.touched || password.dirty)"
-              class="error-message"
-            >
-              <div *ngIf="password.errors?.['required']">
-                Password is required
-              </div>
-              <div *ngIf="password.errors?.['pattern']">
-                Password must be 8 characters long. Must contain atleast 1
-                digit, 1 smallcase character, 1 uppercase character and 1
-                special character.
-              </div>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i
+                  class="fa fa-eye-slash"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                  }"
+                  (click)="toggleFieldTextType()"
+                ></i>
+              </span>
+            </div>
+          </div>
+          <div
+            *ngIf="password.invalid && (password.touched || password.dirty)"
+            class="error-message"
+          >
+            <div *ngIf="password.errors?.['required']">
+              Password is required
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+              Passowrd must be atleast 8 characters!
             </div>
           </div>
 

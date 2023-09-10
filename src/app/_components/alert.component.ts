@@ -23,7 +23,6 @@ switch(message && message.type){
     break;
 }
 this.message = message;
-console.log(message);
         })
     }
 

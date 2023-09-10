@@ -296,7 +296,8 @@ h3{
           margin-left: 16rem;
         }
     .footer-59391 .social-icons li {
-      display: inline-block; }
+      display: inline-block; 
+      margin: 0 5px;}
       .footer-59391 .social-icons li a {
         display: inline-block;
         position: relative;

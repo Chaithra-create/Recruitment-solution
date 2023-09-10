@@ -12,3 +12,10 @@ nav{
    
 }
 
+.nav-item{
+    cursor:pointer;
+}
+
+.logout{
+    margin-left: 48rem;
+}

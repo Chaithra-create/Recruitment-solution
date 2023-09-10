@@ -29,3 +29,23 @@ input{
     box-shadow: none;
     border-color: black;
 }
+
+.first-div{
+    margin-top: 5rem;
+}
+
+.error-message{
+    color: #cc0033;
+    font-size: 14px;
+    margin: 5px 0 0 180px;
+}
+
+.required-field label:after{
+    content: '*';
+    color: red;
+}
+
+.message{
+display: inline;
+margin-left: 1rem;
+}

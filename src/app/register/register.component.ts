@@ -22,6 +22,8 @@ export class RegisterComponent {
 pwdPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$@^!%*?&])(?!.*\s).{8,}$";
 
 accepted: boolean = true;
+fieldTextType1: boolean = false;
+fieldTextType2: boolean = false;
 
 constructor( private alertService:AlertService,
   private authService: AuthService){}
@@ -30,6 +32,15 @@ checkState(event:any){
   console.log(event);
  this.accepted = event.target.checked;
 }
+
+toggleFieldTextType1():boolean{
+return this.fieldTextType1 = !this.fieldTextType1;
+}
+
+toggleFieldTextType2():boolean{
+  return this.fieldTextType2 = !this.fieldTextType2;
+  }
+
 
   onSubmit():void{
     const {username,email,password,confirmPassword} = this.form;

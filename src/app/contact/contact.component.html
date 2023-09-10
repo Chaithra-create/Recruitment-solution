@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm first-div">
       <h2>India’s No.1 Recruitment Platform</h2>
       <p>
         Highly recommended as the one-stop solution to all the hiring needs of a
@@ -10,22 +10,77 @@
     <div class="col-sm">
       <h4>Contact Us</h4>
       <form #contactForm="ngForm">
-        <div class="form-group">
+        <div class="form-group required-field">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" class="form-control" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            [(ngModel)]="form.name"
+            #name="ngModel"
+            required
+          />
+          <div
+            *ngIf="name.invalid && (name.touched || name.dirty || submitted)"
+            class="error-message"
+          >
+            <div *ngIf="name.errors?.['required']">Name is required</div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group required-field">
           <label for="contact">Contact Number</label>
           <input
-            type="number"
+            type="tel"
             id="contact"
             name="contact"
             class="form-control"
+            [(ngModel)]="form.contactNumber"
+            #contactNumber="ngModel"
+            required
           />
+          <div
+            *ngIf="
+              contactNumber.invalid &&
+              (contactNumber.touched || contactNumber.dirty || submitted)
+            "
+            class="error-message"
+          >
+            <div *ngIf="contactNumber.errors?.['required']">
+              Contact Number is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group required-field">
+          <label for="email">Email Id</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="form.email"
+            #email="ngModel"
+            required
+            email
+          />
+          <div
+            *ngIf="email.invalid && (email.touched || email.dirty || submitted)"
+            class="error-message"
+          >
+            <div *ngIf="email.errors?.['required']">Email is required</div>
+            <div *ngIf="email.errors?.['email']">Enter valid email address</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="company">Company Name</label>
-          <input type="text" id="company" name="company" class="form-control" />
+          <input
+            type="text"
+            id="company"
+            name="company"
+            class="form-control"
+            [(ngModel)]="form.company"
+            #company="ngModel"
+          />
         </div>
         <div class="form-group">
           <label for="designation">Designation</label>
@@ -34,17 +89,27 @@
             id="designation"
             name="designation"
             class="form-control"
+            [(ngModel)]="form.designation"
+            #designation="ngModel"
           />
         </div>
         <div class="form-group">
-          <label for="email">Email Id</label>
-          <input type="email" id="email" name="email" class="form-control" />
-        </div>
-        <div class="form-group">
           <label for="city">City</label>
-          <input type="text" id="city" name="city" class="form-control" />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            class="form-control"
+            [(ngModel)]="form.city"
+            #city="ngModel"
+          />
         </div>
-        <button type="submit" class="btn btn-success">Get A Callback</button>
+        <button type="submit" class="btn btn-success" (click)="onSubmit()">
+          Get A Callback
+        </button>
+        <p *ngIf="submitted && contactForm.valid" class="message">
+          Our team will get in touch with you!
+        </p>
       </form>
     </div>
   </div>
