@@ -2,16 +2,6 @@ body{
     background-color: #176B87;
 }
 
-
-.icon{
-    width: 15px;  
-}
-
-.dropdown-menu{
-  background-color: #efefef;
-}
-
-
 .first-img{
     width: 80rem;
     height: 25rem;
@@ -79,13 +69,6 @@ h1{
   text-align: center;
 }
 
-.section-info1{
-    color: rgba(0,0,0,0.7);
-}
-
-.section-info2{
-    color: rgba(0,0,0,0.7);
-}
 
 h3{
     line-height: 40px;
@@ -110,7 +93,6 @@ h3{
   }
   .solution_cards_box .solution_card {
     flex: 0 50%;
-    /* background: #fff; */
     box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
       0 5px 15px 0 rgba(37, 44, 97, 0.15);
     border-radius: 15px;
@@ -244,11 +226,6 @@ h3{
       flex: auto;
     }
   }
-  /* @media only screen and (min-width: 768px) {
-    .our_solution_category .solution_cards_box {
-      flex: 1;
-    }
-  } */
   @media only screen and (min-width: 1024px) {
     .sol_card_top_3 {
       position: relative;
@@ -270,16 +247,6 @@ h3{
     margin: 2rem;
   }
 
-
-  a {
-    -webkit-transition: .3s all ease;
-    -o-transition: .3s all ease;
-    transition: .3s all ease; }
-    a, a:hover {
-      text-decoration: none !important; }
-  
-  .content {
-    height: 70vh; }
   
   .footer-59391 {
     border-top: 1px solid #efefef;
@@ -304,18 +271,12 @@ h3{
         width: 40px;
         height: 40px;
         border-radius: 50%; }
-        .footer-59391 .social-icons li a.dr {
-          background: #ff2e6e; }
-        .footer-59391 .social-icons li a.be {
-          background: #394cff; }
         .footer-59391 .social-icons li a.tw {
           background: #00a0fb; }
         .footer-59391 .social-icons li a.in {
           background: #c31574; }
         .footer-59391 .social-icons li a.fb {
           background: #3b579b; }
-        .footer-59391 .social-icons li a.yt {
-          background: #fa2614; }
         .footer-59391 .social-icons li a span {
           position: absolute;
           top: 50%;
